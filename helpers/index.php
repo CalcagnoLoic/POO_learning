@@ -1,7 +1,9 @@
 <?php 
 require "form.php";
 require "html.php";
+require "validator.php";
 $mod = new Html();
+$val = new Validator();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +26,9 @@ $mod = new Html();
         $form = new CreateForm();
         echo $form->form("post");
         echo $form->createInput("Nom", "Entrez votre nom svp");
+        $name = $_POST['name'];
+        echo $val->isCharacter($name);
+
         echo $form->createSelect("Ville", "une ville", "Belgique", "France", "Suisse");
         echo $form->createTextArea(5,10, "Petite présentation");
         echo "Inscrit à la newsletter?";

@@ -20,7 +20,7 @@ class CreateForm {
     
     public function createInput($input, $legend) 
     {
-        return $this->balise("$input : <input name='name' placeholder=$legend/>");
+        return $this->balise("$input : <input id='name' name='name' placeholder=$legend/>");
     }
 
     public function createSelect($input, $name, $option1, $option2, $option3) 
@@ -34,7 +34,7 @@ class CreateForm {
     }
 
     public function createTextArea($col, $row, $placeholder) {
-        return $this->balise("<textarea placeholder='$placeholder' col='$col' row='$row'></textarea>");
+        return $this->balise("<textarea id='text' placeholder='$placeholder' col='$col' row='$row'></textarea>");
     }
 
     public function createRadio()
