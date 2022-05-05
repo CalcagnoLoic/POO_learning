@@ -28,11 +28,11 @@ class Connexion {
     public function selectQuery($query) 
     {
         $sql = $query;
-        $statement=$this->pdo->prepare($sql);
+        $statement=$this->pdo()->prepare($sql);
         $statement->execute();
-        $statement->fetchAll();
+        $data = $statement->fetchAll();
         echo "<pre>";
-        print_r($statement);
+        print_r($data);
         echo "</pre>";
     }
 }

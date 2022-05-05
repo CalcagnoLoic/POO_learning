@@ -20,7 +20,7 @@ class CreateForm {
     
     public function createInput($input, $legend) 
     {
-        return $this->balise("$input : <input name='name' placeholder='{$legend}'/>");
+        return $this->balise("$input : <input name='name' placeholder=$legend/>");
     }
 
     public function createSelect($input, $name, $option1, $option2, $option3) 
