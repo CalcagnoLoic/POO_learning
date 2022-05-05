@@ -1,53 +1,61 @@
 <?php
+class CreateForm { 
+    public $data = array();
+    public $p_tag = "p";
 
-    class Form {
-
-        public $data = array();
-        public $surround = 'p';
-
-        public function __construct($data = array())
-        {
-            $this->data = $data;
-        }
-
-        private function surround($html) {
-            return "<{$this->surround}>{$html}</{$this->surround}>";
-        }
-
-        public function form(){
-            return "<form method='post'>";
-        }
-
-        public function input() {
-            return $this->surround("Nom : <input type='text' placeholder='Entrez un nom'>");
-        }
-
-        public function select() {
-            return $this->surround("Langue : <select>
-                                    <option>Français</option>
-                                    <option>Anglais</option>
-                                    <option>Néerlandais</option>
-                                    </select>");
-        }
-
-        public function textarea() {
-            return $this->surround("Votre message : <textarea></textarea>");
-        }
-
-        public function radio() {
-            return $this->surround("<input type='radio'> Oui <input type='radio'> Non");
-        }
-
-        public function checkbox() {
-            return $this->surround("<input type='checkbox'> J'accepte les conditions générales");
-        }
-
-        public function submit() {
-            return $this->surround("<button type='submit'>Envoyer</button>");
-        }
-
-        public function formEnding(){
-            return "</form>";
-        }
+    public function __construct($data = array())
+    {
+        $this->data=$data;
     }
+    
+    public function balise($html){
+        return "<$this->p_tag>$html</$this->p_tag>";
+        
+    }
+
+    public function form($method)
+    {
+        return "<form method=$method>";
+    }
+    
+    public function createInput($input, $legend) 
+    {
+        return $this->balise("$input : <input name='name' placeholder='{$legend}'/>");
+    }
+
+    public function createSelect($input, $name, $option1, $option2, $option3) 
+    {
+        return $this->balise("$input : <select name='ville'>
+        <option>Sélectionne $name</option>
+        <option>$option1</option>
+        <option>$option2</option>
+        <option>$option3</option>
+        </select>");
+    }
+
+    public function createTextArea($col, $row, $placeholder) {
+        return $this->balise("<textarea placeholder='$placeholder' col='$col' row='$row'></textarea>");
+    }
+
+    public function createRadio()
+    {
+        return $this->balise("<input type='radio' />Oui <input type='radio' />Non");
+    }
+
+    public function createCheckBox($message)
+    {
+        return $this->balise("$message : <input type='checkbox'/>");
+    }
+
+    public function submit()
+    {
+        return "<input type='submit'/>";
+    }
+
+    public function endingForm()
+    {
+        return "</form><br>";
+    }
+}
+
 ?>
